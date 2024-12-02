@@ -8,16 +8,59 @@ review_rating={'P001':{'Review': 'Great smartphone with amazing speed and camera
 
 
 
-def addnewpro():
-    print()
+def addnewproduct():
+    pn=input("Enter the p  name:-")
+    cat=input("enter the publised date eg, nov-20:-")
+    price=int(input("enter the price:-"))
+    des=input("enter the description:-")
+    stock=input("enter the primary author:-")
     
-def addreview():
-    for i,j in Products.items():
-        review=input(f"enter the review for {i}:-")
-        r=input(f"enter the rating for {i}:-")
-        Id=i
-        review_rating[Id]={'Review': review, 'Rating': r}
-        print(review_rating)
+    key=Products.keys()
+    key=list(key)
+    Id=key[-1]
+    Id=Id.split("P")
+    Id=Id[1]
+    Id=int(Id) 
+    Id+=1
+    Id=str(Id)
+    Id="P"+Id
+    
+    Products[Id]={'Name':pn,'Category':cat,'Price':price,'Description':des,'Stock':stock}
+    print("record Inserted")
+    
+def addprorev():
+    pro=input("enter the product id:-")
+    product_found=False
+    for j in Products.items():
+        if j[0]==pro:
+            product_found=True
+            if product_found:
+                review=input("Enter your feedback")
+                rating=int(input(f"rating of {pro}:-"))
+                review_rating[pro]={'Review':review,'Rating':rating}
+                    
+    if not product_found:
+            print("invalid id")
+
+def DisplayAll():
+    for key,value in Products.items():
+        print(Products[key]['Name'])
+        print(Products[key]['Category'])
+        print(Products[key]['Price'])
+        print(Products[key]['Description'])
+        print(Products[key]['Stock'])
+        if key in review_rating.keys():
+            print(review_rating[key]['Review'])
+            print(review_rating[key]['Rating'])
+
+
+# def addreview():
+#     for i,j in Products.items():
+#         review=input(f"enter the review for {i}:-")
+#         r=input(f"enter the rating for {i}:-")
+#         Id=i
+#         review_rating[Id]={'Review': review, 'Rating': r}
+#         print(review_rating)
         
 def badreviewed():
     for i,j in review_rating.items():
@@ -34,11 +77,11 @@ while True:
     print("5. exit")
     ch=int(input("enter the choice:-"))
     if(ch==1):
-        addnewpro()
+        addnewproduct()
     if(ch==2):
-        addreview()
-    # if(ch==3):
-    #     displayall()
+        addprorev()
+    if(ch==3):
+         DisplayAll()
     if(ch==4):
         badreviewed()
     if(ch==5):
