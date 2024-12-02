@@ -1,8 +1,8 @@
-Products= { 'POOI': { 'Name': 'Smartphone', 'Category': 'Electronics', 'Price': 500, 'Description': 'Latest SG smartphone with 128GB storage', 'Stock': 30 }
-          ,'POW': { 'Name': 'Microwave', 'Category': 'Home Appliances', 'Price': 150, 'Description': '800W Microwave with touch control', 'Stock': 20 },
-          'POF': { 'Name': 'Earbuds', 'Category': 'Electronics', 'Price': 750, 'Description': 'Samsung earbuds', 'Stock': 10},
-        'POM': { 'Name': 'Charger', 'Category': 'Electronics', 'Price': 800, 'Description': 'Samsung charger', 'Stock': 12},
-        'POV': { 'Name': 'Bottel', 'Category': 'Home Appliances', 'Price': 550, 'Description': 'water bottel', 'Stock': 10}}
+Products= { 'P001': { 'Name': 'Smartphone', 'Category': 'Electronics', 'Price': 500, 'Description': 'Latest SG smartphone with 128GB storage', 'Stock': 30 }
+          ,'P002': { 'Name': 'Microwave', 'Category': 'Home Appliances', 'Price': 150, 'Description': '800W Microwave with touch control', 'Stock': 20 },
+          'P003': { 'Name': 'Earbuds', 'Category': 'Electronics', 'Price': 750, 'Description': 'Samsung earbuds', 'Stock': 10},
+        'P004': { 'Name': 'Charger', 'Category': 'Electronics', 'Price': 800, 'Description': 'Samsung charger', 'Stock': 12},
+        'P005': { 'Name': 'Bottel', 'Category': 'Home Appliances', 'Price': 550, 'Description': 'water bottel', 'Stock': 10}}
 review_rating={'P001':{'Review': 'Great smartphone with amazing speed and camera quality.', 'Rating': 5},
                'P002':{'Review': 'Perfect microwave, heats evenly and quickly.', 'Rating': 1}}
 
@@ -10,20 +10,18 @@ review_rating={'P001':{'Review': 'Great smartphone with amazing speed and camera
 
 def addnewproduct():
     pn=input("Enter the p  name:-")
-    cat=input("enter the publised date eg, nov-20:-")
+    cat=input("enter the categry:-")
     price=int(input("enter the price:-"))
     des=input("enter the description:-")
-    stock=input("enter the primary author:-")
+    stock=input("enter the stock:-")
     
-    key=Products.keys()
-    key=list(key)
-    Id=key[-1]
-    Id=Id.split("P")
-    Id=Id[1]
-    Id=int(Id) 
-    Id+=1
-    Id=str(Id)
-    Id="P"+Id
+    key = Products.keys()
+    key = list(key)
+    Id = key[-1]  # Get the last product ID (e.g., "P001")
+    Id = Id.split("P")  # Split by "P"
+    Id = int(Id[1])  # Extract the numeric part
+    Id += 1  # Increment the numeric part
+    Id = "P" + str(Id).zfill(3)
     
     Products[Id]={'Name':pn,'Category':cat,'Price':price,'Description':des,'Stock':stock}
     print("record Inserted")
