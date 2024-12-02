@@ -30,6 +30,14 @@ def viewcart():
             ta=Products[key]['Price']*cart[key]
             print(Products[key]['Name'],"\t\t",Products[key]['Price'],"\t\t",cart[key],"\t\t",ta)
         
+def displayall():
+    for key,value in Products.items():
+        print(f"P Id = {key}")
+        print(f"P name:-{value['Name']}")
+        print(f"P Cat:-{value['Category']}")
+        print(f"p Price:-{value['Price']}")
+        print(f"P discript :-{value['Description']}")
+        print(f"P Stock:-{value['Stock']}")
         
 def removeproduct():
     
@@ -61,7 +69,8 @@ while True:
     print("2. view cart ")
     print("3. remove product")
     print("4. buy from cart")
-    print("5. exit")
+    print("5. display all")
+    print("6. exit")
     ch=int(input("enter the choice:-"))
     if(ch==1):
         addcart()
@@ -72,4 +81,6 @@ while True:
     if(ch==4):
         bill()
     if(ch==5):
+        displayall()
+    if(ch==6):
         break;
